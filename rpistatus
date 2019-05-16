@@ -2,25 +2,24 @@
 
 echo
 
-listvar="rpi01 rpi02 rpi03 rpi04 rpi05 rpi06 rpi07 rpi08 rpi09 rpi10 rpi11 rpi12 rpi13 rpi14 rpi15 rpi16 rpi17 rpi18 rpi19 rpi20"
-
-
-num=$1
+listvar="rpi111 rpi02 rpi03 rpi04 rpi05 rpi06 rpi07 rpi08 rpi09 rpi10 rpi11 rpi12 rpi13 rpi14 rpi15 rpi16 rpi17 rpi18 rpi19 rpi20"
 
 for i in $listvar; do
 	
-	num=$[num+1]
-	fping -c1 -t300 $device 2>/dev/null 1>/dev/null
-	if [ "$?" > 2 ]	
+	num=$[num+1] 
+	ping $i -c 1 $device 2>/dev/null 1>/dev/null
+	if [ $? -eq 0 ]	
 	then 
-		echo "rpi$num is active"
+		echo "$i is active"
 	else
-		echo "rpi$num is dead"
+		echo "$i is dead"
 
 	fi
 	echo
 done
 
 echo 
+ 
+ 
 
  
